@@ -1,7 +1,7 @@
 name: test
 
 on:
-  delete:
+  push:
 
 jobs:
   test:
@@ -13,7 +13,8 @@ jobs:
 
       - name: test
         run: |
-          echo  ${{ github.ref_name }}
+          echo  ${{ toJson(github.event) }}
+          echo  ${{ github.ref }}
           echo  ${{ github.ref_name }}
           echo  ${{ github.ref_type }}
           echo  ${{ github.event.pull_request.merged }}
